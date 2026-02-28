@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silleda Vault | Búnker Dixital</title>
+    <script type="text/javascript" src="/eel.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body onclick="registrarActividade()">
+
+    <div class="container">
+        <div id="status-header-placeholder"></div>
+
+        <div id="view-login" class="view-section active">
+            <div class="input-group">
+                <input type="password" id="master-pass" placeholder="Chave Mestra">
+            </div>
+            <button onclick="login()">ABRIR BÚNKER</button>
+            <p id="login-msg" style="color: var(--neon-red); font-size: 0.8rem; text-align: center; margin-top: 15px;"></p>
+        </div>
+
+        <div id="view-main" class="view-section">
+            <div class="nav-bar">
+                <span class="nav-btn active" onclick="tab('tab-search', this)">BUSCAR</span>
+                <span class="nav-btn" onclick="tab('tab-add', this)">ENGADIR</span>
+                <span class="nav-btn" onclick="tab('tab-settings', this)">AXUSTES</span>
+                <span class="nav-btn" onclick="logout()" style="color: var(--neon-red);">SAIR</span>
+            </div>
+
+            <div id="tab-search" class="tab-content">
+                <input type="text" id="search-input" placeholder="Buscar servizo...">
+                <button onclick="search()">BUSCAR EN MEMORIA</button>
+                <div id="search-results"></div>
+            </div>
+
+            <div id="tab-add" class="tab-content" style="display:none;">
+                <button onclick="xerar()" style="margin-bottom:15px; font-size:0.75rem; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--border);">XERAR CONTRASINAL FORTE</button>
+                <input type="text" id="new-service" placeholder="Servizo">
+                <input type="text" id="new-user" placeholder="Usuario">
+                <div class="input-group">
+                    <input type="password" id="new-pass" placeholder="Contrasinal">
+                    <span class="eye-icon" onclick="toggleView('new-pass')">👁️</span>
+                </div>
+                <button onclick="save()">GARDAR NOVO SEGREDO</button>
+            </div>
+
+            <div id="tab-settings" class="tab-content" style="display:none;">
+                <p style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 15px; text-align: center;">CAMBIO DE CHAVE MESTRA</p>
+                <input type="password" id="old-master" placeholder="Chave Actual">
+                <input type="password" id="new-master" placeholder="Nova Chave Mestra">
+                <button onclick="changeMaster()" class="secondary" style="border-color: var(--neon-purple); color: var(--neon-purple);">ACTUALIZAR BÚNKER</button>
+            </div>
+
+            <div id="tool-output"></div>
+            <div id="footer-placeholder"></div>
+        </div>
+    </div>
+    <script src="client/ui.js"></script>
+    <script src="client/activity.js"></script>
+    <script src="client/auth.js"></script>
+    <script src="client/tabs.js"></script>
+    <script src="client/search.js"></script>
+    <script src="client/generator.js"></script>
+    <script src="client/events.js"></script>
+</body>
+</html>

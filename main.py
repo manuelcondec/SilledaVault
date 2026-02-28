@@ -3,6 +3,7 @@ import threading
 from pathlib import Path
 from database.db_manager import init_db
 from core.security import monitor_inactividade
+from services import api  # Importar las funciones de eel.expose
 
 
 
@@ -21,7 +22,7 @@ def start_app():
     try:
         eel.start('index.html', size=(1000, 750), port=0)
     except (SystemExit, KeyboardInterrupt):
-        print("[SISTEMA] Pechando búnker...")
+        print("[SISTEMA] Pechando bÃºnker...")
 
 
 if __name__ == "__main__":
